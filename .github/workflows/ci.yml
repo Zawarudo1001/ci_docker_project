@@ -39,8 +39,14 @@ jobs:
 
   deploy-local:
     needs: build
-    runs-on: self-hosted  # ← Запуск на вашем ПК
+    runs-on: self-hosted 
     steps:
+      - name: Login to GitHub Container Registry  
+        uses: docker/login-action@v3              
+        with:                                     
+          registry: ghcr.io
+          username: ${{ github.actor }} 
+          password: ${{ secrets.GHCR_PAT }} 
       - name: Pull & Restart container
         run: |
           docker pull ghcr.io/zawarudo1001/myapp:latest
