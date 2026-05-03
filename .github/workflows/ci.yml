@@ -43,7 +43,7 @@ jobs:
     steps:
       - name: Pull & Restart container
         run: |
-          docker pull ghcr.io/Zawarudo1001/myapp:latest
+          docker pull ghcr.io/zawarudo1001/myapp:latest
           docker stop myapp || true
           docker rm myapp || true
-          docker run -d --name myapp -p 8080:80 ghcr.io/Zawarudo1001/myapp:latest
+          docker run -d --name myapp -p 8080:80 ghcr.io/zawarudo1001/myapp:latest
