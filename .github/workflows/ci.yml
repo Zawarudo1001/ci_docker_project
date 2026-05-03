@@ -36,3 +36,14 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t myapp:latest .
+
+  deploy-local:
+    needs: build
+    runs-on: self-hosted  # ← Запуск на вашем ПК
+    steps:
+      - name: Pull & Restart container
+        run: |
+          docker pull ghcr.io/Zawarudo1001/myapp:latest
+          docker stop myapp || true
+          docker rm myapp || true
+          docker run -d --name myapp -p 8080:80 ghcr.io/Zawarudo1001/myapp:latest
