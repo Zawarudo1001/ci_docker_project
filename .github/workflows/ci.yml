@@ -44,4 +44,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image
-        run: docker push myapp:latest
+        run: docker push zawarudo1001/myapp:latest
